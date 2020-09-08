@@ -11,7 +11,7 @@ namespace ruj3wt
             int takenSeats = persons % 5;
            int AvaliableSeats = (unfilledCar * 5) - takenSeats;
            
-           System.Console.WriteLine($"för {persons} personer krävs {amountOfCars} bilar. lediga platser {AvaliableSeats} "  );
+           System.Console.WriteLine($"for {persons} persons {amountOfCars} cars are required. {AvaliableSeats} available seats."  );
         }
         static void Main(string[] args)
         {

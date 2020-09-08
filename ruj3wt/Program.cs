@@ -9,10 +9,10 @@ namespace ruj3wt
            int filledCars = persons / 5;
            int unfilledCar = amountOfCars - filledCars;
             int takenSeats = persons % 5;
-           int AvaliableSeats = (unfilledCar * 5) - takenSeats;
-           
+           int AvaliableSeats = (unfilledCar * 5) - takenSeats;           
            return new int[]{amountOfCars, AvaliableSeats};
         }
+        
         static void Main(string[] args)
         {
             for(int i = 0; i< 7; i++){

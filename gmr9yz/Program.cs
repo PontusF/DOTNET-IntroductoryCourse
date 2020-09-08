@@ -5,11 +5,13 @@ namespace gmr9yz
     class Program
     {
         static int[] sortIntArray(int[] intArray){
-            int[] result = intArray;
+            int[] result = (int[])intArray.Clone();
             bool isSorted = false;
+            
             while(!isSorted){
 
                 isSorted = true;
+
                 for(int i = 0; i < intArray.Length-1; i++){
 
                     if(result[i] > result [i+1]){
@@ -31,7 +33,7 @@ namespace gmr9yz
             //Skriv ett program som läser in tre heltal och skriver ut dem sorterade.
             //min lösning fungerar på N antal tal.
 
-            int[] test1 = new int[]{10, 2, 8, 32,100 , -34,  100 , 2};
+            int[] test1 = {10, 2, 8, 32,100 , -34,  100 , 2};
             int[] result = sortIntArray(test1);
             
             Console.WriteLine("Sorted array:");

@@ -12,7 +12,7 @@ namespace ruj3wt
            int AvaliableSeats = (unfilledCar * 5) - takenSeats;
            
            return new int[]{amountOfCars, AvaliableSeats};
-           
+        }
         static void Main(string[] args)
         {
             for(int i = 0; i< 7; i++){

@@ -9,14 +9,19 @@ class GameEngine{
     }
     public void newGame(){
        
-        Board board = new Board(new int[]{15,15}, 20);
+        Board board = new Board(new int[]{4,4}, 4);
         graphics.drawBoard(board);
         gameInSession = true;
         while(gameInSession){
             
 
             int[] nextGuess = userInputCoordinates();
-            board.guess(nextGuess);
+            int feedBack = board.guess(nextGuess);
+            if(feedBack == -1){
+                graphics.drawBoard(board);
+                Console.WriteLine("GAME OVER NOOB");
+                break;
+            }
             graphics.drawBoard(board);
         }
     }

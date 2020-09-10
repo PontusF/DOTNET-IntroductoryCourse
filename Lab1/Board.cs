@@ -43,9 +43,9 @@ public class Board{
                     int yPos = random.Next(0,dimensions[1]);
 
                     if(!isMine(xPos,yPos)){
-                        boardData[xPos,yPos].setmine(true);
-                        mines.Add((Square)boardData.GetValue(xPos, yPos));
                         spaceOccupied = false;
+                        boardData[xPos,yPos].setmine(true);
+                        mines.Add((Square)boardData.GetValue(xPos, yPos));                        
                     }                    
                 }
         }
@@ -73,21 +73,49 @@ public class Board{
             revealBoard();
             return -1;
         }
-        inspectedSquare.setrevealed(true);
+        ExecuteRevealRipple(inspectedSquare);
         return 0;
     }
 
     public void ExecuteRevealRipple(Square initial){
-        if(initial.isrevealed()){
-            
+        Console.WriteLine("ripple started");
+
+        revealSquare(initial);
+        Square[] adjacent = adjacentSquares(initial.getCoordinates());
+
+        foreach(Square square in adjacent){       
+            if( isHiddenBlank(square)){
+                ExecuteRevealRipple(square);
+            }
+            else if( !square.ismine() && !square.isrevealed() && isBlank(initial)){
+                revealSquare(square);
+            }
         }
-        Square[] adjacentSquares
+    }
+
+    private void revealSquare(Square square){
+        if(square.isrevealed()){    return; }
+            amountOfRevealed++;
+            square.setrevealed(true);
+            if (isGameWon()){
+                Console.WriteLine("YOU WON WOOOOHPIE");
+            }
+    }
+    private bool isGameWon(){
+        Console.WriteLine("DEBUG SQ: " + dimensions[0]*dimensions[1]  +". Mines: " + amountOfMines + ". Revealed: " + amountOfRevealed);
+        return dimensions[0]*dimensions[1] - amountOfMines == amountOfRevealed;
+    }
+    private bool isBlank(Square square){
+        return !square.ismine() && square.getAmountOfAdjacent() == 0;
+    }
+    private bool isHiddenBlank(Square square){
+        return isBlank(square) && !square.isrevealed();
     }
 
     private void revealBoard(){
         for(int x = 0; x < dimensions[0]; x++){
-            for (int y = 0; y < dimensions[1]; y++){
-                boardData[x, y].setrevealed(true);
+            for (int y = 0; y < dimensions[1]; y++){                
+                revealSquare(boardData[x, y]);
             }
         }
     }

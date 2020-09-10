@@ -40,8 +40,17 @@ namespace testing
             };
 
 
-            //Byt ut denna mot användar input. kör en switch case för månaden.
-            MyDate birthDay = new MyDate(01,03);
+            //Byt ut denna mot användar input. 
+            String inputMånad = "Juli";
+            int day = 22;
+            MyDate birthDay;
+            switch (inputMånad){
+                case "juli":
+                    new MyDate(07, 22);
+                    break;
+
+            }
+            
 
             String correctSign = "undetermined";
            for(int i =0; i< signs.Length; i++){

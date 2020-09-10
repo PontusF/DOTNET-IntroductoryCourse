@@ -39,10 +39,18 @@ namespace _5urrww
 
         static void Main(string[] args)
         {
+
+
+            
+
             int[] arrayZero = {2, 7 ,6};
             int[] arrayOne = {9,5 ,1};
             int[] arrayTwo = {4,3 ,8};
             int [][] arrayOfArrays = {arrayZero, arrayOne,arrayTwo};
+
+           
+
+       
 
             if(isMagicSquare(arrayOfArrays)){
                  Console.WriteLine("magisk kub!");

@@ -52,7 +52,7 @@ public class Board{
     }
 
     private void populateAdjacencies(){
-
+        
         //this loop is for mines
         foreach(Square square in mines){
             Square[] adj = adjacentSquares(square.getCoordinates());
@@ -101,13 +101,16 @@ public class Board{
                 Console.WriteLine("YOU WON WOOOOHPIE");
             }
     }
+
     private bool isGameWon(){
         Console.WriteLine("DEBUG SQ: " + dimensions[0]*dimensions[1]  +". Mines: " + amountOfMines + ". Revealed: " + amountOfRevealed);
         return dimensions[0]*dimensions[1] - amountOfMines == amountOfRevealed;
     }
+
     private bool isBlank(Square square){
         return !square.ismine() && square.getAmountOfAdjacent() == 0;
     }
+
     private bool isHiddenBlank(Square square){
         return isBlank(square) && !square.isrevealed();
     }

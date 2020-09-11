@@ -9,7 +9,7 @@ class GameEngine{
     }
     public void newGame(){
        
-        Board board = new Board(new int[]{4,4}, 4);
+        Board board = new Board(new int[]{10,10}, 20);
         graphics.drawBoard(board);
         gameInSession = true;
         while(gameInSession){

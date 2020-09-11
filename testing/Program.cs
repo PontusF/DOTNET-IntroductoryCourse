@@ -25,10 +25,10 @@ namespace testing
 
             static bool isStarSign(StarSign sign, MyDate date){
 
-                if(date.month < sign.start.month)   {   return false;   }
-                if(date.month > sign.end.month)     {   return false;   }
-                if(date.day < sign.start.day)       {   return false;   }
-                if(date.day > sign.end.day)         {   return false;   }
+                if(date.month < sign.start.month)                                           {   return false;   }
+                if(date.month > sign.end.month)                                             {   return false;   }
+                if(date.day < sign.start.day    &&      date.month == sign.start.month)     {   return false;   }
+                if(date.day > sign.end.day     &&      date.month == sign.end.month)        {   return false;   }
                 
                 return true;
             }

@@ -74,11 +74,13 @@ public class Board{
             return -1;
         }
         ExecuteRevealRipple(inspectedSquare);
+        if (isGameWon()){
+            return 1;
+        }
         return 0;
     }
 
     public void ExecuteRevealRipple(Square initial){
-        Console.WriteLine("ripple started");
 
         revealSquare(initial);
         Square[] adjacent = adjacentSquares(initial.getCoordinates());
@@ -97,13 +99,12 @@ public class Board{
         if(square.isrevealed()){    return; }
             amountOfRevealed++;
             square.setrevealed(true);
-            if (isGameWon()){
-                Console.WriteLine("YOU WON WOOOOHPIE");
-            }
+            
     }
 
     private bool isGameWon(){
-        Console.WriteLine("DEBUG SQ: " + dimensions[0]*dimensions[1]  +". Mines: " + amountOfMines + ". Revealed: " + amountOfRevealed);
+        //Console.WriteLine("DEBUG SQ: " + dimensions[0]*dimensions[1]  +". Mines: " + amountOfMines + ". Revealed: " + amountOfRevealed);
+        Console.WriteLine("Squares left: " + (dimensions[0]*dimensions[1]  - amountOfMines  - amountOfRevealed));
         return dimensions[0]*dimensions[1] - amountOfMines == amountOfRevealed;
     }
 

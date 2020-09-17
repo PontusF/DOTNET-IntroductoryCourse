@@ -9,7 +9,7 @@ class GameEngine{
     }
     public void newGame(){
        
-        Board board = new Board(new int[]{10,10}, 20);
+        Board board = new Board(new int[]{10, 10}, 20);
         graphics.drawBoard(board);
         gameInSession = true;
         while(gameInSession){
@@ -20,6 +20,10 @@ class GameEngine{
             if(feedBack == -1){
                 graphics.drawBoard(board);
                 Console.WriteLine("GAME OVER NOOB");
+                break;
+            }
+            if(feedBack == 1){                
+                Console.WriteLine("YOU WON WOOOOHPIE");
                 break;
             }
             graphics.drawBoard(board);

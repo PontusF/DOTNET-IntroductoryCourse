@@ -5,6 +5,8 @@ namespace testing
     class Program
     {
         public enum Player{
+
+            //värdena 1 och 4 kommer sättas in i brädets kordinatsystem när spelarna gör drag.
             Kryss = 1,
             Ring = 4
             
@@ -41,26 +43,26 @@ namespace testing
 
         public static void playerMove(int[,] board, Player activePlayer){
             //en spelares drag
-               bool playerMoveDone = false;
-                while(!playerMoveDone){                    
-                    Console.WriteLine(activePlayer + "?");  
+            bool playerMoveDone = false;
+            while(!playerMoveDone){                    
+                Console.WriteLine(activePlayer + "?");  
 
-                    String userInput = Console.ReadLine();
-                    //läs in värderna i koordinater.
-                    int xVal = int.Parse(userInput.Substring(0,1));     
-                    int yVal = int.Parse(userInput.Substring(1,1));  
-                    
-                    //konvertera till arrayvärden. Arraysen börjar ju på 0, inte 1.           
-                    xVal -= 1;                    
-                    yVal -=1;
+                String userInput = Console.ReadLine();
+                //läs in värderna i koordinater.
+                int xVal = int.Parse(userInput.Substring(0,1));     
+                int yVal = int.Parse(userInput.Substring(1,1));  
+                
+                //konvertera till arrayvärden. Arraysen börjar ju på 0, inte 1.           
+                xVal -= 1;                    
+                yVal -=1;
 
-                    //om platsen i brädet är ledig
-                    if(board[xVal,yVal] == 0){
-                        //sätt spelarens värde i rutan
-                        board[xVal,yVal] = (int)activePlayer;
-                        playerMoveDone= true;
-                    }
+                //om platsen i brädet är ledig
+                if(board[xVal,yVal] == 0){
+                    //sätt spelarens värde i rutan
+                    board[xVal,yVal] = (int)activePlayer;
+                    playerMoveDone= true;
                 }
+            }
         }
 
         public static void WriteBoard(int[,] board){

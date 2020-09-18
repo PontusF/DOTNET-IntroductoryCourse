@@ -90,14 +90,14 @@ namespace testing
         
         public static Boolean playerWon(int[,] board, Player activePlayer){
             for(int i =0; i < 3; i++){
-                    //om aktiv spelare vann på x.
-                   if(board[i,0]+ board[i,1]+board[i,2] == (int)activePlayer*3){
-                       return true;                       
-                   }
-                   //om aktiv spelare vann på y.
-                   if(board[0,i]+ board[1,i]+board[2,i] == (int)activePlayer*3){
-                       return true;                      
-                   }
+                //om aktiv spelare vann på x.
+                if(board[i,0]+ board[i,1]+board[i,2] == (int)activePlayer*3){
+                    return true;                       
+                }
+                //om aktiv spelare vann på y.
+                if(board[0,i]+ board[1,i]+board[2,i] == (int)activePlayer*3){
+                    return true;                      
+                }
             }
 
             //om aktiv spelare vann på diagonal
@@ -105,7 +105,7 @@ namespace testing
                 return true;
             }
             //om aktiv spelare vann på diagonal
-            else if(board[2,0] + board[1,1] + board[0,2] ==(int)activePlayer*3){
+            if(board[2,0] + board[1,1] + board[0,2] ==(int)activePlayer*3){
                 return true;
             }
             return false;

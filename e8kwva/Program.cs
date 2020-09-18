@@ -5,45 +5,50 @@ namespace testing
     class Program
     {
         public enum Player{
-
             //värdena 1 och 4 kommer sättas in i brädets kordinatsystem när spelarna gör drag.
             Kryss = 1,
             Ring = 4
             
         }
         
-       
-        
         public static void Main(string[] args){
+           
            Player activePlayer = Player.Ring;
+           String winner = "";
            bool gameActive = true;
            int[,] board = new int[3,3]{
                {0,0,0},
                {0,0,0},
                {0,0,0},
            };
+
+
+
             //sålänge matchen är igång
-           while(gameActive){
+           for(int i = 0; i < 9; i++){
 
                 WriteBoard(board);                
                 playerMove(board, activePlayer);
 
                 if(playerWon(board, activePlayer)){
-                    gameActive=false;
+                    winner = activePlayer.ToString();
+                    break;
                 }
-                if(gameActive){
-                    activePlayer = ChangePlayer(activePlayer);                    
-                }                
+                    activePlayer = ChangePlayer(activePlayer);                                  
            }
 
            WriteBoard(board);
-           Console.WriteLine(activePlayer + " vann!");
+           if (winner == ""){
+                 Console.WriteLine("Oavgjort!");
+           }else{
+                Console.WriteLine(activePlayer + " vann!");
+           }        
 
         }    
 
-        public static void playerMove(int[,] board, Player activePlayer){
-            //en spelares drag
+        public static void playerMove(int[,] board, Player activePlayer){           
             bool playerMoveDone = false;
+
             while(!playerMoveDone){                    
                 Console.WriteLine(activePlayer + "?");  
 
@@ -90,8 +95,7 @@ namespace testing
             for(int i =0; i < 3; i++){
                     //om aktiv spelare vann på x.
                    if(board[i,0]+ board[i,1]+board[i,2] == (int)activePlayer*3){
-                       return true;
-                       
+                       return true;                       
                    }
                    //om aktiv spelare vann på y.
                    if(board[0,i]+ board[1,i]+board[2,i] == (int)activePlayer*3){
@@ -104,13 +108,11 @@ namespace testing
                 return true;
             }
             //om aktiv spelare vann på diagonal
-            else if(board[2,0] + board[1,1] + board[2,0] ==(int)activePlayer*3){
+            else if(board[2,0] + board[1,1] + board[0,2] ==(int)activePlayer*3){
                 return true;
             }
             return false;
-        }
-        
-
+        }       
          public static Player ChangePlayer(Player activePlayer){
             if(activePlayer.Equals(Player.Ring)){
                 return  Player.Kryss;
@@ -118,7 +120,5 @@ namespace testing
                 return  Player.Ring;
             }               
         }
-
-
     }
 }

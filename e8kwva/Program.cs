@@ -38,7 +38,7 @@ namespace testing
            if (winner == ""){
                  Console.WriteLine("Oavgjort!");
            }else{
-                Console.WriteLine(activePlayer + " vann!");
+                Console.WriteLine(winner + " vann!");
            }        
 
         }    

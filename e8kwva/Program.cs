@@ -113,9 +113,8 @@ namespace testing
          public static Player ChangePlayer(Player activePlayer){
             if(activePlayer.Equals(Player.Ring)){
                 return  Player.Kryss;
-            }else{
-                return  Player.Ring;
-            }               
+            }
+            return  Player.Ring;                        
         }
     }
 }

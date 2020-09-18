@@ -14,15 +14,12 @@ namespace testing
         public static void Main(string[] args){
            
            Player activePlayer = Player.Ring;
-           String winner = "";
-           bool gameActive = true;
+           String winner = "";          
            int[,] board = new int[3,3]{
                {0,0,0},
                {0,0,0},
                {0,0,0},
            };
-
-
 
             //sålänge matchen är igång
            for(int i = 0; i < 9; i++){
@@ -34,7 +31,7 @@ namespace testing
                     winner = activePlayer.ToString();
                     break;
                 }
-                    activePlayer = ChangePlayer(activePlayer);                                  
+                activePlayer = ChangePlayer(activePlayer);                                  
            }
 
            WriteBoard(board);
